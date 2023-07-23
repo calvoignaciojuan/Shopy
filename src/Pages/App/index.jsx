@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from "react-router-dom"
+import { Navbar } from "../../Components/Navbar"
 
 import Home from "../Home"
 import MyAccount from "../MyAccount"
@@ -25,6 +26,7 @@ const App = ()=>{
   return (
     <BrowserRouter>
         <AppRoutes/>
+        <Navbar/>
     </BrowserRouter>       
   )
 }

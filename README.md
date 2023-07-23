@@ -1,2 +1,2 @@
 # Shopy
-Ecommerce develop with React-Vite and Tailwind CSS
+Ecommerce developed with React-Vite and Tailwind CSS

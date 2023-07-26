@@ -1,12 +1,12 @@
-import { Layout } from "../../Components/Layout"
+import { Layout } from "../../Components/Layout";
 
-function MyOrder() {
+const MyOrder = ()=> {
  
     return (
         <Layout>
             MyOrder
         </Layout>   
-    )
-  }
-  
-  export {MyOrder};
+    );
+};
+
+export {MyOrder};

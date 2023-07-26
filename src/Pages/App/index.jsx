@@ -3,7 +3,7 @@ import { Navbar } from "../../Components/Navbar"
 
 import Home from "../Home"
 import MyAccount from "../MyAccount"
-import MyOrder from "../MyOrder"
+import {MyOrder} from "../MyOrder"
 import MyOrders from "../MyOrders"
 import NotFound from "../NotFound"
 import SignIn from "../SignIn"
@@ -25,8 +25,8 @@ const AppRoutes = () =>{
 const App = ()=>{ 
   return (
     <BrowserRouter>
-        <AppRoutes/>
         <Navbar/>
+        <AppRoutes/>    
     </BrowserRouter>       
   )
 }

@@ -1,10 +1,17 @@
 import { NavLink } from "react-router-dom";
 
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+
+import { useShopyContext } from "../../Context";
+
 const Navbar = () => {
+
+    const { count } = useShopyContext();
+
     const activeStyle = "underline underline-offset-4"
 
     return(
-        <nav className="flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm font-normal">
+        <nav className="flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm font-normal bg-white">
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
                     <NavLink to="/">
@@ -87,6 +94,7 @@ const Navbar = () => {
                         My Orders
                     </NavLink>
                 </li>
+                
                 <li>
                     <NavLink
                         to="/my-account"
@@ -107,8 +115,9 @@ const Navbar = () => {
                         Sign in
                     </NavLink>
                 </li>
-                <li>
-                    Cart-0
+                <li className="flex items-center">
+                    <ShoppingCartIcon className="h-5 w-5 text-black mr-1"/>
+                    <span className="mx-1">{count}</span>
                 </li>
             </ul>
         </nav>

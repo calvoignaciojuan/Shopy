@@ -1,7 +1,13 @@
-import { Layout } from "../../Components/Layout"
-import Card from "../../Components/Card";
 import { useEffect, useState } from "react";
 import apiUrl from "../../api"
+
+import { Layout } from "../../Components/Layout"
+import Card from "../../Components/Card";
+import ProductDetail from "../../Components/ProductDetail";
+import MyOrder from "../../Components/MyOrder";
+
+import { useShopyContext } from "../../Context";
+
 
 function Home() {
     
@@ -19,6 +25,8 @@ function Home() {
         };
         fetchData();
     },[]);
+
+    const { isAsideOpen, openAside, closeAside, } = useShopyContext();
     
     return (
         
@@ -30,8 +38,10 @@ function Home() {
                     })        
                 }
             </div>
+            {isAsideOpen() && <ProductDetail/>}
+            <MyOrder/>
         </Layout>    
-    );
+    );  
   }
   
   export default Home

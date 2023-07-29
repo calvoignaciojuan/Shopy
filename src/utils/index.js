@@ -17,8 +17,8 @@ export const totalPrice = (productArray) =>{
 
 
 
-// const listItems = [{id:1,price:10},{id:2,price:20},{id:3,price:30}];
-// const orders = [ [{id:4,price:40},{id:5,price:50},{id:6,price:60}]];
+// const listItems = [ {id:1,price:10},{id:2,price:20},{id:3,price:30} ];
+// const orders = [ [ {id:4,price:40},{id:5,price:50},{id:6,price:60} ], [ {id:4,price:40},{id:5,price:50},{id:6,price:60}] ];
 
 // const suma = [...orders,listItems];
 

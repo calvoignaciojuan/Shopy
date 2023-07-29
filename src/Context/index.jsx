@@ -65,6 +65,7 @@ const ShopyContextProvider = ({children}) => {
             closeMyOrder,
             openMyOrder,
             myOrderItems,
+            setMyOrderItems,
             addItemToOrder,
             removeItemFromOrder,
             ordersArray, 

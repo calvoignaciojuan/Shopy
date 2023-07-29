@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { XCircleIcon } from '@heroicons/react/24/outline'
 import { useShopyContext } from '../../Context';
 import {totalPrice} from '../../utils'
@@ -15,13 +17,14 @@ const MyOrderAside = () => {
         const actualOrder = {
             date:"01-02-23",
             products: myOrderItems,
-            totalProducts: myOrderItems.length(),
+            totalProducts: myOrderItems.length,
             totalPrice: totalPrice(myOrderItems)
         };
 
         setOrdersArray([...ordersArray , actualOrder]);
         setMyOrderItems([]);
         setCount(0);
+        closeMyOrder();
     };
 
     return(
@@ -47,17 +50,15 @@ const MyOrderAside = () => {
                 <div className='flex justify-between items-center  p-4 border-t-2  border-b-2 my-4'>
                     <p className='text-xl  font-bold'>Total:</p>
                     <p className='text-lg  font-bold'>$ {totalPrice(myOrderItems)}</p>                
-                </div>
-                <form action="/my-orders/last" className='flex justify-center items-center bg-black mx-2 rounded-md h-10'>
+                </div>  
+                <Link to={`/my-order/${ordersArray.length}`} className='flex'>
                     <button 
-                        className='text-white'
+                        className='bg-black w-full rounded-md mx-4 h-10 text-white'
                         onClick={addOrder}>
                         checkout
-                    </button>
-                </form>
-            </div>
-            
-          
+                    </button>                
+                </Link>          
+            </div>         
         </aside>
     );
 };

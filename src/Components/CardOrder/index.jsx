@@ -5,11 +5,19 @@ const CardOrder = (props)=>{
     const { decrementCount, removeItemFromOrder } = useShopyContext();
     
     const {images:imagesUrl, title, price, id} = props.data;
-  
+    
     const deleteButton = (event,id)=>{
         decrementCount(event);
         removeItemFromOrder(id);
     };   
+
+    let renderIconDetele;
+    if (!props.deleteDisable){
+        renderIconDetele = <XCircleIcon 
+                                className='h-5 w-5 ml-2 right-0'
+                                onClick={(event)=>{deleteButton(event,id)}}
+                            />;
+    }
 
     return(
         <li className='flex gap-2 h-20  my-3 mx-2 justify-between items-center relative'>
@@ -19,11 +27,8 @@ const CardOrder = (props)=>{
                     src={imagesUrl?imagesUrl[0]:""} alt={title} />
             </picture>
             <p className='w-40'>{title}</p>
-            <p className='font-bold'>${price}</p>
-            <XCircleIcon 
-                className='h-5 w-5 ml-2 right-0'
-                onClick={(event)=>{deleteButton(event,id)}}
-            />
+            <p className='w-12 font-bold'>${price}</p>
+            {renderIconDetele}
         </li>
     );
 };

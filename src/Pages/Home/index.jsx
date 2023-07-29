@@ -4,7 +4,7 @@ import apiUrl from "../../api"
 import { Layout } from "../../Components/Layout"
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
-import MyOrder from "../../Components/MyOrder";
+import MyOrder from "../../Components/MyOrderAside";
 
 import { useShopyContext } from "../../Context";
 
@@ -26,7 +26,7 @@ function Home() {
         fetchData();
     },[]);
 
-    const { isAsideOpen, openAside, closeAside, } = useShopyContext();
+    const { isAsideOpen, openAside, closeProductDetail, } = useShopyContext();
     
     return (
         
@@ -38,8 +38,7 @@ function Home() {
                     })        
                 }
             </div>
-            {isAsideOpen() && <ProductDetail/>}
-            <MyOrder/>
+            {isAsideOpen() && <ProductDetail/>}          
         </Layout>    
     );  
   }

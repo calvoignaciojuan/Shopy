@@ -5,6 +5,7 @@ import { Navbar } from "../../Components/Navbar"
 import Home from "../Home"
 import MyAccount from "../MyAccount"
 import {MyOrder} from "../MyOrder"
+import MyOrderAside from "../../Components/MyOrderAside"
 import MyOrders from "../MyOrders"
 import NotFound from "../NotFound"
 import SignIn from "../SignIn"
@@ -15,9 +16,10 @@ const AppRoutes = () =>{
     const routes = useRoutes([
         { path:"/", element:< Home/>},
         { path:"/my-account", element:< MyAccount/>},
-        { path:"/my-order",   element:< MyOrder/>},
+        // { path:"/my-order",   element:< MyOrder/>},
         { path:"/my-orders",  element:< MyOrders/>},
         { path:"/sign-in",    element:< SignIn/>},
+        { path:"/sign-in",    element:< MyOrder/>},
         { path:"*",           element:< NotFound/>},
     ]);
     return routes;
@@ -27,8 +29,9 @@ const App = ()=>{
   return (
     <ShopyContextProvider>
         <BrowserRouter>
+            <AppRoutes/>   
             <Navbar/>
-            <AppRoutes/>    
+            <MyOrderAside/> 
         </BrowserRouter>       
     </ShopyContextProvider>        
   )

@@ -10,31 +10,67 @@ const ShopyContextProvider = ({children}) => {
     const incrementCount = (event) =>{
         event.stopPropagation();
         setCount(count+1);
-    }
+    };
+    const decrementCount = (event) =>{
+        event.stopPropagation();
+        setCount(count-1);
+    };
 
-    //aside show - on/off
+    //aside detail show - on/off
     const [asideState, setAsideState] = useState(false);    
     const isAsideOpen = () => { return(asideState);};
-    const openAside = () => { return(setAsideState(true));};
-    const closeAside = () => { return(setAsideState(false));};
+    const openProductDetail = () => { setAsideState(true)};
+    const closeProductDetail = () => { setAsideState(false)};
 
-    //product detal info
+    //product detail info
     const[productInfo,setProductInfo] = useState({});
-    // title:"",
-    // price:0,
-    // category:"",
-    // image:""
+
+    //My OrderAside - on/off
+    const[isMyOrderOpen,setIsMyOrderOpen] = useState(false);
+    const closeMyOrder = () =>{setIsMyOrderOpen(false)};
+    const openMyOrder = () =>{setIsMyOrderOpen(true)};
+
+    // My Order List
+    const[myOrderItems,setMyOrderItems] = useState([]);
+
+    const addItemToOrder = (item) => {
+        setMyOrderItems( [...myOrderItems , item] );
+    };
+    const removeItemFromOrder = (idToDelete) => {
+        
+        const indexItem = myOrderItems.findIndex( object => {
+            return(object.id === idToDelete);
+        }); 
+        myOrderItems.splice(indexItem,1);
+        setMyOrderItems(myOrderItems);
+    };
+
+    // Orders (list of orders)
+    const [ordersArray, setOrdersArray] = useState([]);
+
+
+
     return(
         <shopyContext.Provider value={{
             count,
             setCount,
             incrementCount,
+            decrementCount,
             isAsideOpen,
-            openAside,
-            closeAside,
+            openProductDetail,
+            closeProductDetail,
             productInfo,
-            setProductInfo
+            setProductInfo,
+            isMyOrderOpen,
+            closeMyOrder,
+            openMyOrder,
+            myOrderItems,
+            addItemToOrder,
+            removeItemFromOrder,
+            ordersArray, 
+            setOrdersArray
         }}>
+        
             {children}
         </shopyContext.Provider>                         
     );   

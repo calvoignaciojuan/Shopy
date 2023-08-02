@@ -8,25 +8,24 @@ function MyOrders() {
 
     const { ordersArray } = useShopyContext();
 
-
     return (
         <Layout>
             <h2 className="mb-2 font-bold">MyOrders</h2> 
-            {
+            <ul className="w-[300px] ">
+                {
                 ordersArray?.map( (order,index) => {
-                    return(
-                        <ul className="w-[300px] ">
-                            <Link to={`/my-order/${index}`}>
-                                <OrdersCard 
-                                    date = {order.date}
-                                    totalProducts = {order.totalProducts}
-                                    price = {order.totalPrice}
-                                />                            
-                            </Link>
-                        </ul>               
+                    return(                        
+                        <Link to={`/my-order/${index}`}  key = {index} >
+                            <OrdersCard                                
+                                date = {order.date}
+                                totalProducts = {order.totalProducts}
+                                price = {order.totalPrice}
+                            />                            
+                        </Link>                                
                     )
                 })
-            }
+                }
+            </ul>    
         </Layout>   
     )
   }

@@ -25,3 +25,9 @@ export const totalPrice = (productArray) =>{
 // console.log(listItems);
 // console.log(orders);
 // console.log(suma);
+
+
+
+// const string = "Hola que tal como estas?";
+// console.log(string.includes("Ho")); //true
+// console.log(string.includes("ho")); //false

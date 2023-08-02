@@ -1,10 +1,12 @@
 
-import { createContext , useContext, useState } from "react";
+import { createContext , useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import apiUrl from "../api";
 
 const shopyContext = createContext();
 
 const ShopyContextProvider = ({children}) => {
-
     // cart counter
     const [count, setCount] = useState(0);
     const incrementCount = (event) =>{
@@ -48,8 +50,50 @@ const ShopyContextProvider = ({children}) => {
     // Orders (list of orders)
     const [ordersArray, setOrdersArray] = useState([]);
 
+    // Items(products) fetch API        
+    const [items,setItems] = useState(null);
 
+    useEffect( () => {
+        const fetchData = async() => {
+            try {
+                const response = await fetch(`${apiUrl}/products`);            
+                const data = await response.json();             
+                setItems(data);
+            } catch (error) {
+                console.error(`Ocurrió un error: ${error}`);
+            }            
+        };
+        fetchData();
+    },[]);
 
+    //searchText, to filter products
+    const[searchText, setSearchText ] = useState(null);
+ 
+    //categoryFilter
+    // const params = useParams();
+    // const categoryParamsFilter = params.category;
+    const[categoryTextFilter, setCategoryTextFilter ] = useState(null);
+
+    //filteredProducts
+    const[filteredProducts,setFilteredProducts] = useState([]);
+    
+    useEffect(()=>{
+        let itemsFiltered = items;
+
+        if(searchText){
+            itemsFiltered = items?.filter( (product) => {
+                return( product.title.toLowerCase().includes(searchText.toLowerCase()));
+            }); 
+        }
+        if(categoryTextFilter){
+            itemsFiltered = itemsFiltered?.filter( (product) => {
+                return( product.category.name.toLowerCase() === (categoryTextFilter.toLowerCase()));
+            }); 
+        }       
+        setFilteredProducts(itemsFiltered);
+    
+    },[items,searchText,categoryTextFilter]);
+  
     return(
         <shopyContext.Provider value={{
             count,
@@ -69,7 +113,14 @@ const ShopyContextProvider = ({children}) => {
             addItemToOrder,
             removeItemFromOrder,
             ordersArray, 
-            setOrdersArray
+            setOrdersArray,
+            items,
+            setItems,
+            searchText, 
+            setSearchText,
+            filteredProducts,
+            categoryTextFilter,
+            setCategoryTextFilter
         }}>
         
             {children}

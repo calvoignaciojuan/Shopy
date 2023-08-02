@@ -1,52 +1,41 @@
-import { useEffect } from 'react';
 import { useShopyContext } from "../../Context";
 import { useParams } from "react-router-dom";
+
 
 import { Layout } from "../../Components/Layout"
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
 
-function Home() {
+function Filter() {
 
-    const { items, isAsideOpen, searchText, setSearchText, setCategoryTextFilter, categoryTextFilter, filteredProducts } = useShopyContext();
-    const params = useParams();
-    
-    useEffect( () =>{        
-        const categoryParamsFilter = params.category;
-        console.log('categoryParamsFilter',categoryParamsFilter);
-        if( categoryTextFilter != categoryParamsFilter){
-            setCategoryTextFilter(categoryParamsFilter);
-        } 
-    });
+    const { items, isAsideOpen, searchText, setSearchText, filteredProducts, setCategoryTextFilter } = useShopyContext();
 
     const renderProducts = () => {
 
-        let itemsToRender = null;
+        // const params = useParams();
+        // const textToFilter = params.textToFilter;
+        // if(textToFilter){
+        //     setCategoryTextFilter(textToFilter);    
+        // }  
+        // console.log(searchText);
 
-        if(!searchText && !categoryTextFilter){
-            itemsToRender = items;
-        }else{
-            itemsToRender = filteredProducts;
-            if(itemsToRender?.length > 0){
-                itemsToRender = filteredProducts;
-            }else{
+        let itemsToRender = items;
+        if (textToFilter?.length > 0 ){   
+            if(filteredProducts?.length == 0 ){
                 return(
-                  <p>no results were found</p>
+                    <p>no results were found</p>
                 );
+            }else{
+                itemsToRender = filteredProducts;
             }
-        }        
+        }
 
         return(
             itemsToRender?.map( (item,index) => {
                 return(<Card key={index} data={item}/>);
             }) 
-        );      
-
+        );       
     }
-    const changeHandler = (event)=>{
-        setSearchText(null);
-        setSearchText(event.target.value);
-    };
 
     return (        
         <Layout>
@@ -56,7 +45,7 @@ function Home() {
                     type="text" 
                     placeholder="Search a product"
                     className="h-12 w-full p-2 mt-2 border border-black rounded-lg"
-                    onChange={(event) => {changeHandler(event)}}
+                    onChange={(event) => {setSearchText(event.target.value);}}
                 />
             </div>
             <div className="grid grid-cols-4 gap-4 w-full max-w-screen-lg">
@@ -69,5 +58,5 @@ function Home() {
     );  
   }
   
-  export default Home
+  export default Filter
 

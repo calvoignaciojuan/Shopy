@@ -1,10 +1,7 @@
-import { Link } from "react-router-dom";
-import {  useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Layout } from "../../Components/Layout";
 import { useShopyContext  } from "../../Context";
 import CardOrder from "../../Components/CardOrder"
-
-import { totalPrice } from "../../utils";
 
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 
@@ -13,12 +10,8 @@ const MyOrder = ()=> {
     const { ordersArray, setOrdersArray, openMyOrder  } = useShopyContext();
 
     const params = useParams();
-    console.log(params);    
     const indexOrderPath = Number(params.id);
-    console.log(indexOrderPath);
-
     const orderToShow = ordersArray[indexOrderPath];
-    console.log(orderToShow);
 
     return (
         <Layout>
@@ -30,10 +23,10 @@ const MyOrder = ()=> {
                     <h2 className="flex-1 font-bold text-lg ml-20">My Order</h2>
                 </div>
                 <ul className='flex flex-col overflow-y-auto'>
-                    {orderToShow.products?.map( (item) =>{                        
+                    {orderToShow.products?.map( (item,index) =>{                        
                         return(
                         <CardOrder 
-                            key={item.id} 
+                            key={index} 
                             data={item}
                             deleteDisable = {true}
                         />);                        

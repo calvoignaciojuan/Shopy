@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
-
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
-
 import { useShopyContext } from "../../Context";
 
 const Navbar = () => {
 
-    const { count } = useShopyContext();
+    const { count, setCategoryTextFilter, setSearchText} = useShopyContext();
 
     const activeStyle = "underline underline-offset-4"
+
+    const clickHandler = (categoryText) => {
+        setSearchText(''); // when path changes, clean searchText 
+    }
 
     return(
         <nav className="flex justify-between items-center fixed z-10 top-0 w-full px-8 py-5 text-sm font-normal bg-white">
@@ -24,56 +26,62 @@ const Navbar = () => {
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler()}
                     >
                         All
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/clothes"
+                        to="/filter/clothes"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler("clothes")}
                     >
                         Clothes
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/electronics"
+                        to="/filter/electronics"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler("electronics")}
                     >
                         Electronics
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/forniture"
+                        to="/filter/furniture"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler("furniture")}
                     >
-                        Forniture
+                        Furniture
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/toys"
+                        to="/filter/toys"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler("toys")}
                     >
                         Toys
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/others"
+                        to="/filter/others"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
+                        onClick={() => clickHandler("others")}
                     >
                         Others
                     </NavLink>

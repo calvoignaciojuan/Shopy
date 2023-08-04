@@ -7,6 +7,7 @@ import apiUrl from "../api";
 const shopyContext = createContext();
 
 const ShopyContextProvider = ({children}) => {
+
     // cart counter
     const [count, setCount] = useState(0);
     const incrementCount = (event) =>{
@@ -67,7 +68,7 @@ const ShopyContextProvider = ({children}) => {
     },[]);
 
     //searchText, to filter products
-    const[searchText, setSearchText ] = useState(null);
+    const[searchText, setSearchText ] = useState('');
  
     //categoryFilter
     // const params = useParams();
@@ -78,8 +79,8 @@ const ShopyContextProvider = ({children}) => {
     const[filteredProducts,setFilteredProducts] = useState([]);
     
     useEffect(()=>{
-        let itemsFiltered = items;
 
+        let itemsFiltered = items;
         if(searchText){
             itemsFiltered = items?.filter( (product) => {
                 return( product.title.toLowerCase().includes(searchText.toLowerCase()));
@@ -89,8 +90,10 @@ const ShopyContextProvider = ({children}) => {
             itemsFiltered = itemsFiltered?.filter( (product) => {
                 return( product.category.name.toLowerCase() === (categoryTextFilter.toLowerCase()));
             }); 
-        }       
-        setFilteredProducts(itemsFiltered);
+        }  
+        if(searchText || categoryTextFilter){
+            setFilteredProducts(itemsFiltered);
+        }
     
     },[items,searchText,categoryTextFilter]);
   

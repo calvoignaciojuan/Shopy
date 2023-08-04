@@ -33,7 +33,6 @@ const AppRoutes = () =>{
 }
 
 const App = ()=>{ 
-    console.log('app');
   return (
     <ShopyContextProvider>
         <BrowserRouter>

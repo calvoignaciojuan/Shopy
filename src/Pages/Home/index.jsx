@@ -9,14 +9,14 @@ import ProductDetail from "../../Components/ProductDetail";
 function Home() {
 
     const { items, isAsideOpen, searchText, setSearchText, setCategoryTextFilter, categoryTextFilter, filteredProducts } = useShopyContext();
-    const params = useParams();
+    const params = useParams();    
     
     useEffect( () =>{        
         const categoryParamsFilter = params.category;
-        console.log('categoryParamsFilter',categoryParamsFilter);
-        if( categoryTextFilter != categoryParamsFilter){
+        // console.log('categoryParamsFilter',categoryParamsFilter);
+        if( categoryParamsFilter && (categoryTextFilter != categoryParamsFilter)){
             setCategoryTextFilter(categoryParamsFilter);
-        } 
+        }         
     });
 
     const renderProducts = () => {
@@ -55,6 +55,7 @@ function Home() {
                 <input 
                     type="text" 
                     placeholder="Search a product"
+                    value={searchText}
                     className="h-12 w-full p-2 mt-2 border border-black rounded-lg"
                     onChange={(event) => {changeHandler(event)}}
                 />

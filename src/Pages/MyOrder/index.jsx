@@ -17,7 +17,7 @@ const MyOrder = ()=> {
         <Layout>
             <div className="w-[336px]">
                 <div className="flex justify-center items-center mb-4">
-                    <Link to = "/my-orders">
+                    <Link to = "/Shopy/my-orders">
                         <ArrowUturnLeftIcon className="ml-3 w-6 h-6"/>
                     </Link>                
                     <h2 className="flex-1 font-bold text-lg ml-20">My Order</h2>

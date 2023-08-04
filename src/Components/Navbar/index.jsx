@@ -20,7 +20,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
                     <NavLink 
-                        to="/"
+                        to="/Shopy/"
                         onClick={() => clickHandler()}
                     >
                         Shopy
@@ -28,7 +28,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/"
+                        to="/Shopy/"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/filter/clothes"
+                        to="/Shopy/filter/clothes"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -50,7 +50,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/filter/electronics"
+                        to="/Shopy/filter/electronics"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -61,7 +61,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/filter/furniture"
+                        to="/Shopy/filter/furniture"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -72,7 +72,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/filter/toys"
+                        to="/Shopy/filter/toys"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -83,7 +83,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/filter/others"
+                        to="/Shopy/filter/others"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -100,7 +100,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/my-orders"
+                        to="/Shopy/my-orders"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -111,7 +111,7 @@ const Navbar = () => {
                 
                 <li>
                     <NavLink
-                        to="/my-account"
+                        to="/Shopy/my-account"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }
@@ -121,7 +121,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/sign-in"
+                        to="/Shopy/sign-in"
                         className={({ isActive, isPending }) =>
                             isPending ? "" : isActive ? activeStyle : ""
                         }

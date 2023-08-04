@@ -51,7 +51,7 @@ const MyOrderAside = () => {
                     <p className='text-xl  font-bold'>Total:</p>
                     <p className='text-lg  font-bold'>$ {totalPrice(myOrderItems)}</p>                
                 </div>  
-                <Link to={`/my-order/${ordersArray.length}`} className='flex'>
+                <Link to={`/Shopy/my-order/${ordersArray.length}`} className='flex'>
                     <button 
                         className='bg-black w-full rounded-md mx-4 h-10 text-white'
                         onClick={addOrder}>

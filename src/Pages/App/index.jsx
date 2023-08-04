@@ -13,14 +13,16 @@ import Filter from "../Filter"
 
 import './App.css'
 
+const endPointDeploy = "/Shopy"
+
 const AppRoutes = () =>{
     const routes = useRoutes([
-        { path:"/",                           element: < Home/>},
-        { path:"/my-account",                 element: < MyAccount/>},
-        { path:"/my-orders",                  element: < MyOrders/>},
-        { path:"/my-order/:id",               element: < MyOrder/>},
-        { path:"/sign-in",                    element: < SignIn/>},
-        { path:"/filter/:category",           element: < Home />},
+        { path:"/Shopy/",                     element: < Home/>},
+        { path:"/Shopy/my-account",                 element: < MyAccount/>},
+        { path:"/Shopy/my-orders",                  element: < MyOrders/>},
+        { path:"/Shopy/my-order/:id",               element: < MyOrder/>},
+        { path:"/Shopy/sign-in",                    element: < SignIn/>},
+        { path:"/Shopy/filter/:category",           element: < Home />},
 
         // { path:"/clothes",                    element: < Home/>},
         // { path:"/electronics",                element: < Home/>},        

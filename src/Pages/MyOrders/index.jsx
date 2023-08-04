@@ -15,7 +15,7 @@ function MyOrders() {
                 {
                 ordersArray?.map( (order,index) => {
                     return(                        
-                        <Link to={`/my-order/${index}`}  key = {index} >
+                        <Link to={`/Shopy/my-order/${index}`}  key = {index} >
                             <OrdersCard                                
                                 date = {order.date}
                                 totalProducts = {order.totalProducts}
